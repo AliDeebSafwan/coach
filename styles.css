@@ -67,6 +67,29 @@ footer {
     color: #fff;
     padding: 1rem 0;
 }
+.cont-info {
+    margin-top: 30px;
+    max-width: 1200px
+}
+.cont-info a {
+    display: flex;
+    margin-left:8.3rem;
+    padding-bottom: 4%;
+}
+
+.con-info p {
+    color: #008080;
+    margin: 5px;
+}
+
+
+.con-info img {
+    max-width: 75px;
+    border-radius: 20%;
+    margin-right: 0.5rem;
+    display: flex;
+
+        }
 @media only screen and (max-width: 600px) {
     nav {
         flex-wrap: wrap;
