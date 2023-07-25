@@ -67,3 +67,8 @@ footer {
     color: #fff;
     padding: 1rem 0;
 }
+@media only screen and (max-width: 600px) {
+    nav {
+        flex-wrap: wrap;
+    }
+}
