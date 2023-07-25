@@ -71,4 +71,7 @@ footer {
     nav {
         flex-wrap: wrap;
     }
+    .con-info img {
+        max-width: 100%;
+    }
 }
