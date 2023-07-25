@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CALORIS</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        input[type="number"] {
+            width: 150px;
+            padding: 5px;
+        }
+        input[type="radio"] {
+            margin: 0 5px;
+        }
+        button {
+            padding: 8px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>CALORIS Counting </h1>
+    <label for="age">Age:</label>
+    <input type="number" id="age" min="1" max="150">
+    <br>
+    <label for="height">Height (Cm):</label>
+    <input type="number" id="height" min="50" max="300">
+    <br>
+    <label for="weight"> Weight (Kg):</label>
+    <input type="number" id="weight" min="1" max="500">
+    <br>
+    <label>الجنس:</label>
+    <input type="radio" id="male" name="gender" value="male">
+    <label for="male">Male</label>
+    <input type="radio" id="female" name="gender" value="female">
+    <label for="female"></label>Female </label>
+    <br>
+    <label>الهدف من التمرين:</label>
+    <select id="goal">
+        <option value="maintenance">Weight maintenance</option>
+        <option value="weight_loss">Weight loss </option>
+        <option value="muscle_gain"> Weight over</option>
+    </select>
+    <br>
+    <button onclick="calculateCalories()">Calculate</button>
+    <p id="result"></p>
+
+    <script>
+        function calculateCalories() {
+            var age = parseFloat(document.getElementById("age").value);
+            var height = parseFloat(document.getElementById("height").value);
+            var weight = parseFloat(document.getElementById("weight").value);
+            var gender = document.querySelector('input[name="gender"]:checked').value;
+            var goal = document.getElementById("goal").value;
+            var resultElement = document.getElementById("result");
+
+            if (isNaN(age) || isNaN(height) || isNaN(weight)) {
+                resultElement.textContent = "please enter valid values.";
+                return;
+            }
+
+            var bmr;
+            if (gender === "male") {
+                bmr = 88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age);
+            } else {
+                bmr = 447.593 + (9.247 * weight) + (3.098 * height) - (4.330 * age);
+            }
+
+            var tdee;
+            switch (goal) {
+                case "maintenance":
+                    tdee = bmr * 1.2; 
+                    break;
+                case "weight_loss":
+                    tdee = bmr * 1.2 - 500; 
+                    break;
+                case "muscle_gain":
+                    tdee = bmr * 1.2 + 500; 
+                    break;
+                default:
+                    tdee = bmr * 1.2;
+            }
+
+            resultElement.textContent = "Your daily calorie requirement : " + tdee.toFixed(2) + " caloris";
+        }
+    </script>
+</body>
+</html>
